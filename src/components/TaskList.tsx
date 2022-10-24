@@ -14,8 +14,6 @@ export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [newTaskTitle, setNewTaskTitle] = useState('')
 
-  console.log(tasks)
-
   function handleCreateNewTask() {
     const newTaskToAdd = {
       id: tasks.length + 1,
@@ -36,7 +34,9 @@ export function TaskList() {
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    const newTaskList = tasks.filter(task => task.id != id)
+
+    setTasks(newTaskList)
   }
 
   return (

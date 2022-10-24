@@ -16,7 +16,7 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     const newTaskToAdd = {
-      id: tasks.length + 1,
+      id: Math.floor(Math.random() * 100),
       title: newTaskTitle,
       isComplete: false
     }
@@ -35,7 +35,6 @@ export function TaskList() {
 
   function handleRemoveTask(id: number) {
     const newTaskList = tasks.filter(task => task.id != id)
-
     setTasks(newTaskList)
   }
 

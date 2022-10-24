@@ -22,7 +22,7 @@ export function TaskList() {
     }
 
     if (newTaskTitle === '' || newTaskTitle === null) {
-      alert('Você deve preecher uma nova task')
+      window.alert('Você deve preecher uma nova task')
     } else {
       setTasks([...tasks, newTaskToAdd])
       setNewTaskTitle('')
@@ -30,7 +30,11 @@ export function TaskList() {
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const taskListUpdated = tasks.map(task =>
+      task.id === id ? { ...task, isComplete: !task.isComplete } : task
+    )
+
+    setTasks(taskListUpdated)
   }
 
   function handleRemoveTask(id: number) {
